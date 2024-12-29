@@ -25,7 +25,6 @@ public class TopicoService {
     @Autowired
     private CursoRepository cursoRepository;
 
-    // Método registrar actualizado para aceptar DatosRegistroTopico
     public Topico registrar(DatosRegistroTopico datosRegistroTopico) {
         if (topicoRepository.existsByTituloAndMensaje(datosRegistroTopico.titulo(), datosRegistroTopico.mensaje())) {
             throw new ValidationException("Ya existe un tópico con el mismo título y mensaje");

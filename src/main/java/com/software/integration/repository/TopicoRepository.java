@@ -8,6 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface TopicoRepository extends JpaRepository<Topico, Long> {
-    Optional<Topico> findById(Long id); // Eliminado el filtro por activo
+    Optional<Topico> findById(Long id);
     boolean existsByTituloAndMensaje(String titulo, String mensaje);
 }

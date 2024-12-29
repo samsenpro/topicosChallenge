@@ -17,14 +17,7 @@ public class CursoService {
     @Autowired
     private CursoRepository cursoRepository;
 
-    /**
-     * Registrar un nuevo curso.
-     *
-     * @param datosRegistroCurso Datos necesarios para registrar un curso.
-     * @return El curso registrado.
-     */
     public Cursos registrar(DatosRegistroCurso datosRegistroCurso) {
-        // Verificar si ya existe un curso con el mismo nombre y categoría
         if (cursoRepository.existsByNombreAndCategoria(datosRegistroCurso.nombre(), datosRegistroCurso.categoria())) {
             throw new ValidationException("Ya existe un curso con el mismo nombre y categoría");
         }

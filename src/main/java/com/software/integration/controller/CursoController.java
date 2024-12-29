@@ -40,14 +40,6 @@ public class CursoController {
         return ResponseEntity.ok(respuesta);
     }
 
-    /**
-     * Endpoint para actualizar un curso existente.
-     * URL: PUT /cursos/{id}
-     *
-     * @param id                ID del curso a actualizar.
-     * @param datosActualizarCurso Datos para actualizar el curso.
-     * @return Datos del curso actualizado.
-     */
     @PutMapping("/{id}")
     public ResponseEntity<DatosRespuestaCurso> actualizarCurso(
             @PathVariable Long id,
@@ -58,13 +50,6 @@ public class CursoController {
         return ResponseEntity.ok(respuesta);
     }
 
-    /**
-     * Endpoint para eliminar un curso por su ID.
-     * URL: DELETE /cursos/{id}
-     *
-     * @param id ID del curso a eliminar.
-     * @return Respuesta sin contenido.
-     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarCurso(@PathVariable Long id) {
         cursoService.eliminar(id);
