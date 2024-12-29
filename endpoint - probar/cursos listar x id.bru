@@ -1,0 +1,21 @@
+meta {
+  name: cursos listar x id
+  type: http
+  seq: 11
+}
+
+get {
+  url: http://localhost:8080/cursos
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlzcyI6InZvbGwgbWVkIiwiaWQiOjIsImV4cCI6MTczNTQyMDMxNn0.Fym6Vi9LeEQxbZMeEllImWIuy1bacVmfGkUagw9TbjU
+}
+
+body:json {
+  {
+    "id": 1
+  }
+}
