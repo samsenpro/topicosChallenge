@@ -31,20 +31,18 @@ public class TopicoService {
             throw new ValidationException("Ya existe un tópico con el mismo título y mensaje");
         }
 
-        // Obtener referencias al autor y al curso usando los IDs proporcionados
         var autor = usuarioRepository.findById(datosRegistroTopico.autorId())
                 .orElseThrow(() -> new EntityNotFoundException("Autor no encontrado con ID: " + datosRegistroTopico.autorId()));
         var curso = cursoRepository.findById(datosRegistroTopico.cursoId())
                 .orElseThrow(() -> new EntityNotFoundException("Curso no encontrado con ID: " + datosRegistroTopico.cursoId()));
 
-        // Crear una nueva instancia de Topico usando el constructor que acepta DatosRegistroTopico
         var topico = new Topico(datosRegistroTopico, autor, curso);
 
         return topicoRepository.save(topico);
     }
 
     public Page<Topico> listar(Pageable paginacion) {
-        return topicoRepository.findAll(paginacion); // Eliminado el filtro por activo
+        return topicoRepository.findAll(paginacion);
     }
 
     public Topico buscarPorId(Long id) {
@@ -70,6 +68,6 @@ public class TopicoService {
 
     public void eliminar(Long id) {
         var topico = buscarPorId(id);
-        topicoRepository.delete(topico); // Actualizado para eliminar directamente
+        topicoRepository.delete(topico);
     }
 }

@@ -33,33 +33,15 @@ public class CursoService {
         return cursoRepository.save(curso);
     }
 
-    /**
-     * Listar todos los cursos con paginación.
-     *
-     * @param paginacion Parámetros de paginación.
-     * @return Página de cursos.
-     */
     public Page<Cursos> listar(Pageable paginacion) {
         return cursoRepository.findAll(paginacion);
     }
 
-    /**
-     * Buscar un curso por su ID.
-     *
-     * @param id ID del curso.
-     * @return El curso encontrado.
-     */
     public Cursos buscarPorId(Long id) {
         return cursoRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Curso no encontrado con ID: " + id));
     }
 
-    /**
-     * Actualizar un curso existente.
-     *
-     * @param datos Datos para actualizar el curso.
-     * @return El curso actualizado.
-     */
     public Cursos actualizar(DatosActualizarCurso datos) {
         Cursos curso = buscarPorId(datos.id());
 
@@ -74,11 +56,6 @@ public class CursoService {
         return cursoRepository.save(curso);
     }
 
-    /**
-     * Eliminar un curso por su ID.
-     *
-     * @param id ID del curso a eliminar.
-     */
     public void eliminar(Long id) {
         Cursos curso = buscarPorId(id);
         cursoRepository.delete(curso);

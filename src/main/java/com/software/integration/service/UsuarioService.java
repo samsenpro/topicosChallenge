@@ -18,27 +18,23 @@ public class UsuarioService {
     private PasswordEncoder passwordEncoder;
 
     public Usuario registrarUsuario(DatosRegistroUsuario datosRegistro) {
-        // Verificar si el email ya está en uso
         if (usuarioRepository.findByEmail(datosRegistro.email()).isPresent()) {
             throw new IllegalArgumentException("El email ya está en uso.");
         }
 
-        // Crear un nuevo usuario
         Usuario usuario = new Usuario();
         usuario.setNombre(datosRegistro.nombre());
         usuario.setEmail(datosRegistro.email());
         usuario.setPassword(passwordEncoder.encode(datosRegistro.clave()));
 
-        // Asignar rol (puedes asignar un rol por defecto si no se proporciona)
         Rol rol;
         try {
             rol = Rol.valueOf(datosRegistro.rol());
         } catch (IllegalArgumentException e) {
-            rol = Rol.ESTUDIANTE; // Rol por defecto
+            rol = Rol.ESTUDIANTE;
         }
         usuario.setRol(rol);
 
-        // Guardar el usuario en la base de datos
         return usuarioRepository.save(usuario);
     }
 }

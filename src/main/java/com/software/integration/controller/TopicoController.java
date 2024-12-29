@@ -47,7 +47,7 @@ public class TopicoController {
         DatosRespuestaTopico respuesta = new DatosRespuestaTopico(topicoActualizado);
         return ResponseEntity.ok(respuesta);
     }
-    
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarTopico(@PathVariable Long id) {
         topicoService.eliminar(id);
